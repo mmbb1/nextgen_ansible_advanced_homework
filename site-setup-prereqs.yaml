@@ -7,7 +7,7 @@
   tasks:
   - name: Create workstation inventory
     add_host:
-       name: "workstation-{{OSP_GUID}}.{{OSP_DOMAIN}}"
+       name: "{{OSP_DOMAIN}}"
        group: workstation
        ansible_user: "{{ OPENTLC_ID }}"       
 
@@ -15,9 +15,9 @@
   become: yes
   roles:
     - setup-workstation
-    - osp-setup
+#    - osp-setup
 
-- import_playbook: site-install-isolated-node.yaml
+#- import_playbook: site-install-isolated-node.yaml
 
 
 
