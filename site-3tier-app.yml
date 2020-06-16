@@ -10,8 +10,9 @@
   hosts: frontends
   become: yes
   roles:
-    - {name: base-config, tags: base-config}
-    - {name: lb-tier, tags: [lbs, haproxy]}
+    - lb-tier
+    #- {name: base-config, tags: base-config}
+    #- {name: lb-tier, tags: [lbs, haproxy]}
 
 # Setup application servers tier
 
