@@ -8,7 +8,7 @@
     replace: 'Defaults  !requiretty'
     backup: yes
 
-- name: enable repos
+- name: Enable repos
   yum_repository:
     name: local_repo
     description: Organisation local YUM repo
