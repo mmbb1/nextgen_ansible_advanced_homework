@@ -1,6 +1,6 @@
 ---
 # tasks file for roles/config-tower
-- include_tasks: roles/osp-servers/tasks/db.yml
-- include_tasks: roles/osp-servers/tasks/app1.yml
-- include_tasks: roles/osp-servers/tasks/app2.yml
-- include_tasks: roles/osp-servers/tasks/frontend.yml
+- include_tasks: ./db.yml
+- include_tasks: ./app1.yml
+- include_tasks: ./app2.yml
+- include_tasks: ./frontend.yml
