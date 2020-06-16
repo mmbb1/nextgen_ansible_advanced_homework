@@ -9,6 +9,10 @@
     backup: yes
 
 - name: enable repos
+  yum_repository:
+    name: local_repo
+    description: Organisation local YUM repo
+    baseurl: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
  
-- name: install base tools and packages
+#- name: install base tools and packages
 
