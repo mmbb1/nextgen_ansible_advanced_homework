@@ -1,7 +1,14 @@
 ---
 
+- name: Copy HAProxy  package
+  template:
+    src: roles/lb-tier/templates/haproxy-1.5.18-9.el7.x86_64.rpm
+    dest: /tmp/haproxy-1.5.18-9.el7.x86_64.rpm
+    mode: 0644
+
 - name: Ensure HAProxy is installed.
-  package: name=haproxy state=present
+  #package: name=haproxy state=present
+  command: yum localinstall -y /tmp/haproxy-1.5.18-9.el7.x86_64.rpm
 
 - name: Get HAProxy version.
   command: haproxy -v
