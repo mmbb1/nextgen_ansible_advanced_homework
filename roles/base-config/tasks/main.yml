@@ -42,10 +42,10 @@
 #    dest: /usr/share/tomcat/webapps/ROOT/index.html
 #    mode: 0644
 
-- name: start tomcat
-  service:
-    name: tomcat
-    state: started
+#- name: start tomcat
+#  service:
+#    name: tomcat
+#    state: started
 
 - name: start tomcat
   service:
