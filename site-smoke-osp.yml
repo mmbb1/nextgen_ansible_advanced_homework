@@ -1,4 +1,4 @@
-- hosts: frontend
+- hosts: workstation
   gather_facts: true
   tasks:
     command: curl frontend
