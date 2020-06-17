@@ -1,0 +1,32 @@
+---
+# Initial, common, system setup steps
+
+- name: Copy  package
+  copy:
+    src: postgres.tar
+    dest: /tmp/postgres.tar
+    mode: 0644
+
+- name: Ensure package  is installed.
+  hosts: apps
+  command: mkdir /tmp/repo
+  command: mv /tmp/postgres.tar /tmp/repo/postgres.tar
+  command: cd /tmp/repo ;tar -xvf  /tmp/repo/postgres.tar
+  command: yum localinstall --nogpgcheck -y /tmp/repo/postgresql-9.2.24-1.el7_5.x86_64.rpm
+
+
+  - name: enable postgres at boot
+    service:
+      name: postgresql
+      enabled: yes
+
+
+  - name: initilize postgres some more
+    run_once: true
+    command: chkconfig postgresql on
+    command: postgresql-setup initdb
+
+  - name: start postgres
+    service:
+      name: postgresql.service
+      state: started
