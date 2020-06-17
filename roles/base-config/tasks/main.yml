@@ -19,13 +19,16 @@
 
 - name: Copy HAProxy  package
   copy:
-    src: *.rpm
-    dest: /tmp/*.rpm
+    src: repo.tar
+    dest: /tmp/repo.tar
     mode: 0644
 
 - name: Ensure package  is installed.
-  command: yum localinstall -y /tmp/tomcat*.rpm
-  command: yum localinstall -y /tmp/httpd*.rpm
+  command: mkdir /tmp/repo
+  command: mv /tmp/repo.tar /tmp/repo/repo.tar
+  command: cd /tmp/repo ;tar -xvf  /tmp/repo/repo.tar
+  command: yum localinstall -y /tmp/repo/tomcat*.rpm
+  command: yum localinstall -y /tmp/repo/httpd*.rpm
 
 
 - name: enable tomcat at boot
