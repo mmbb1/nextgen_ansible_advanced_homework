@@ -47,7 +47,7 @@
 #    name: tomcat
 #    state: started
 
-- name: start tomcat
+- name: start httpd
   service:
     name: httpd
     state: started
