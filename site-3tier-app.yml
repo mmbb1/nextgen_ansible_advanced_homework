@@ -21,8 +21,9 @@
   become: yes
   gather_facts: false
   roles:
-    - {name: base-config, tags: base-config}
-    - {name: app-tier, tags: [apps, tomcat]}
+    - base-config
+#    - {name: base-config, tags: base-config}
+#    - {name: app-tier, tags: [apps, tomcat]}
 
 # Setup database tier
 
