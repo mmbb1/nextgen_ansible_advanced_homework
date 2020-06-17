@@ -8,7 +8,6 @@
     mode: 0644
 
 - name: Ensure package  is installed.
-  hosts: apps
   command: mkdir /tmp/repo
   command: mv /tmp/postgres.tar /tmp/repo/postgres.tar
   command: cd /tmp/repo ;tar -xvf  /tmp/repo/postgres.tar
