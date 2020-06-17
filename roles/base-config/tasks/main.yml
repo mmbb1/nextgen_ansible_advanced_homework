@@ -56,13 +56,3 @@
   service:
     name: httpd
     state: started
-
-- name: enable apache at boot
-  service:
-    name: httpd
-    enabled: yes
-
-- name: enable apache at boot
-  service:
-    name: tomcat
-    enabled: yes
