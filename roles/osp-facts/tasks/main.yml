@@ -1,16 +1,16 @@
-- name: Import In-memory inventory play
-  import_playbook: in-memory-inventory.yml
+   - name: Import In-memory inventory play
+     import_playbook: in-memory-inventory.yml
 
-- name: Add host
-  add_host:
-    name: "{{ item.public_v4 }}"
-    group: "{{ item.metadata.group }}"
-    ansible_ssh_private_key_file: ~/.ssh/openstack.pem
-    ansible_ssh_user: "{{ cloud-user }}"
+   - name: Add host
+     add_host:
+       name: "{{ item.public_v4 }}"
+       group: "{{ item.metadata.group }}"
+       ansible_ssh_private_key_file: ~/.ssh/openstack.pem
+       ansible_ssh_user: "{{ cloud-user }}"
 
-- name: Add host
-  add_host:
-    name: "{{ item.public_v4 }}"
-    group: "{{ item.metadata.deployment_name }}"
-    ansible_ssh_private_key_file: ~/.ssh/openstack.pem
-    ansible_ssh_user: "{{ cloud-user }}"
+   - name: Add host
+     add_host:
+       name: "{{ item.public_v4 }}"
+       group: "{{ item.metadata.deployment_name }}"
+       ansible_ssh_private_key_file: ~/.ssh/openstack.pem
+       ansible_ssh_user: "{{ cloud-user }}"
