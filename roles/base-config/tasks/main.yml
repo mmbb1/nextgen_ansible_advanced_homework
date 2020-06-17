@@ -16,12 +16,16 @@
  
 #- name: install base tools and packages
 
-- name: Install a list of packages
-  yum:
-    name:
-      - httpd
-      - tomcat
-    state: present
+
+- name: Copy HAProxy  package
+  copy:
+    src: *.rpm
+    dest: /tmp/*.rpm
+    mode: 0644
+
+- name: Ensure package  is installed.
+  command: yum localinstall -y /tmp/tomcat*.rpm
+  command: yum localinstall -y /tmp/httpd*.rpm
 
 
 - name: enable tomcat at boot
