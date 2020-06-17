@@ -1,5 +1,5 @@
-   - name: Import In-memory inventory play
-     import_playbook: in-memory-inventory.yml
+   #- name: Import In-memory inventory play
+   #  import_playbook: in-memory-inventory.yml
 
    - name: Add host
      add_host:
