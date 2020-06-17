@@ -1,3 +1,5 @@
+---
+
 - name: Add host
   add_host:
     name: "{{ item.public_v4 }}"
