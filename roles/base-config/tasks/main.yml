@@ -27,8 +27,8 @@
   command: mkdir /tmp/repo
   command: mv /tmp/repo.tar /tmp/repo/repo.tar
   command: cd /tmp/repo ;tar -xvf  /tmp/repo/repo.tar
-  command: yum localinstall -y /tmp/repo/tomcat-7.0.76-10.el7_7.noarch.rpm
-  command: yum localinstall -y /tmp/repo/httpd-2.4.6-90.el7.x86_64.rpm
+  command: yum localinstall --nogpgcheck -y /tmp/repo/tomcat-7.0.76-10.el7_7.noarch.rpm
+  command: yum localinstall --nogpgcheck -y /tmp/repo/httpd-2.4.6-90.el7.x86_64.rpm
 
 
 - name: enable tomcat at boot
