@@ -13,10 +13,3 @@
   command: cd /tmp/repo ;tar -xvf  /tmp/repo/postgres.tar
   command: yum localinstall --nogpgcheck -y /tmp/repo/postgresql-9.2.24-1.el7_5.x86_64.rpm
 
-
-
-
-- name: initilize postgres some more
-  run_once: true
-  command: chkconfig postgresql on
-#  command: postgresql-setup initdb
