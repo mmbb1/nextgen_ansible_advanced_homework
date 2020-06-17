@@ -1,5 +1,5 @@
-- hosts: workstation
-  gather_facts: false
+- hosts: frontend
+  gather_facts: true
   tasks:
     command: curl frontend
 #  - name: OpenStack servers
