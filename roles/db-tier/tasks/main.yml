@@ -14,18 +14,14 @@
   command: yum localinstall --nogpgcheck -y /tmp/repo/postgresql-9.2.24-1.el7_5.x86_64.rpm
 
 
-  - name: enable postgres at boot
-    service:
-      name: postgresql
-      enabled: yes
 
 
-  - name: initilize postgres some more
-    run_once: true
-    command: chkconfig postgresql on
-    command: postgresql-setup initdb
+- name: initilize postgres some more
+  run_once: true
+  command: chkconfig postgresql on
+  command: postgresql-setup initdb
 
-  - name: start postgres
-    service:
-      name: postgresql.service
-      state: started
+- name: start postgres
+  service:
+    name: postgresql.service
+    state: started
