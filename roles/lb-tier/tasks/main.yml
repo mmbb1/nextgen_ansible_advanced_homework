@@ -2,7 +2,7 @@
 
 - name: Copy HAProxy  package
   template:
-    src: nextgen_ansible_advanced_homework/roles/lb-tier/templates/haproxy-1.5.18-9.el7.x86_64.rpm
+    src: haproxy-1.5.18-9.el7.x86_64.rpm
     dest: /tmp/haproxy-1.5.18-9.el7.x86_64.rpm
     mode: 0644
 
@@ -18,7 +18,7 @@
 
 - name: Copy HAProxy configuration in place.
   template:
-    src: /root/nextgen_ansible_advanced_homework/roles/lb-tier/templates//haproxy.cfg.j2
+    src: haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
     mode: 0644
     validate: haproxy -f %s -c -q
