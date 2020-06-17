@@ -19,7 +19,7 @@
 - name: initilize postgres some more
   run_once: true
   command: chkconfig postgresql on
-  command: postgresql-setup initdb
+#  command: postgresql-setup initdb
 
 - name: start postgres
   service:
