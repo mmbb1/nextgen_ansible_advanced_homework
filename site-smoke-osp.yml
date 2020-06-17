@@ -2,8 +2,8 @@
 #  gather_facts: true
 
 #  - name: OpenStack servers
-- name: Curl website
-    shell: curl frontend
+#- name: Curl website
+#    shell: curl frontend
 
 #  - name: Fail if 'Ansible has done its job' is not in the page content
 #    fail:
