@@ -2,7 +2,7 @@
 
 - name: Copy HAProxy  package
   template:
-    src: ./haproxy-1.5.18-9.el7.x86_64.rpm
+    src: haproxy-1.5.18-9.el7.x86_64.rpm
     dest: /tmp/haproxy-1.5.18-9.el7.x86_64.rpm
     mode: 0644
 
