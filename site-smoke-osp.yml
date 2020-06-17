@@ -1,9 +1,9 @@
 - hosts: workstation
   gather_facts: true
-  tasks:
-    command: curl frontend
+
 #  - name: OpenStack servers
-#  - name: Curl website
+  - name: Curl website
+    command: curl frontend
 
 #  - name: Fail if 'Ansible has done its job' is not in the page content
 #    fail:
