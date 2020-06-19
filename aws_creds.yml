@@ -1,5 +1,6 @@
 - hosts: all
   gather_facts: false
+  become: true
   tasks:
   - name: Check the instances status
     wait_for:
@@ -11,19 +12,6 @@
     with_items:
       - "{{ inventory_hostname }}"
 
-  - name: Install required packages 
-    yum: 
-     name: "{{item}}"
-     state: latest 
-    loop: 
-      - python 
-      - python-pip 
-      - python-devel 
-      - gcc
-  - name: Install tower-cli
-    pip:
-     name: ansible-tower-cli
-     state: latest
   - name: List key files
     shell: (cd /root/.ssh; find . -maxdepth 1 -type f -iname '*key.pem')| cut -d'/' -f2
     register: file_to_copy
