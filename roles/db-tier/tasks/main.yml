@@ -1,15 +1,34 @@
 ---
 # Initial, common, system setup steps
 
-- name: Copy  package
-  copy:
-    src: postgres.tar
-    dest: /tmp/postgres.tar
-    mode: 0644
 
-- name: Ensure package  is installed.
-  command: mkdir /tmp/repo
-  command: mv /tmp/postgres.tar /tmp/repo/postgres.tar
-  command: cd /tmp/repo ;tar -xvf  /tmp/repo/postgres.tar
-  command: yum localinstall --nogpgcheck -y /tmp/repo/postgresql-9.2.24-1.el7_5.x86_64.rpm
+- name: Enable repos
+  yum_repository:
+    name: local_repo
+    description: Organisation local YUM repo
+    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-rpms
 
+- name: Enable repos
+  yum_repository:
+    name: local_repo_extra
+    description: Organisation local YUM repo
+    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-extras-rpms
+ 
+- name: Enable repos
+  yum_repository:
+    name: local_repo_extra_optional
+    description: Organisation local YUM repo
+    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-optional-rpms
+
+- name: ensure a list of packages installed
+  yum:
+    name: "{{ packages }}"
+    disable_gpg_check: yes
+  vars:
+    packages:
+    - postgresql
+
+- name: start postgresql
+  service:
+    name: postgresql
+    state: started
