@@ -12,42 +12,37 @@
   yum_repository:
     name: local_repo
     description: Organisation local YUM repo
-    baseurl: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+    #baseurl: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/
  
 #- name: install base tools and packages
 
-
-- name: Copy HAProxy  package
-  copy:
-    src: repo.tar
-    dest: /tmp/repo.tar
-    mode: 0644
-
-- name: Ensure package  is installed.
-  command: mkdir /tmp/repo
-  command: mv /tmp/repo.tar /tmp/repo/repo.tar
-  command: cd /tmp/repo ;tar -xvf  /tmp/repo/repo.tar
-  command: yum localinstall --nogpgcheck -y /tmp/repo/tomcat-7.0.76-10.el7_7.noarch.rpm
-  command: yum localinstall --nogpgcheck -y /tmp/repo/httpd-2.4.6-90.el7.x86_64.rpm
-
+- name: ensure a list of packages installed
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - httpd
+    - httpd-tools
+    - tomcat
 
 - name: create ansible tomcat directory
   file:
     path: /usr/share/tomcat/webapps/ROOT
     state: directory
 
-#- name: copy static index.html to tomcat webapps/ansible/index.html
-#  template:
-#    src: index.html.j2
-#    dest: /usr/share/tomcat/webapps/ROOT/index.html
-#    mode: 0644
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  template:
+    src: index.html.j2
+    dest: /usr/share/tomcat/webapps/ROOT/index.html
+    mode: 0644
 
-#- name: start tomcat
-#  service:
-#    name: tomcat
-#    state: started
+- name: start tomcat
+  service:
+    name: tomcat
+    state: started
 
-#- name: start httpd
-#  service:
-#    name: httpd
-#    state: started
+- name: start httpd
+  service:
+    name: httpd
+    state: started
