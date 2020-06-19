@@ -6,9 +6,31 @@
     dest: /tmp/haproxy-1.5.18-9.el7.x86_64.rpm
     mode: 0644
 
-- name: Ensure HAProxy is installed.
-  #package: name=haproxy state=present
-  command: yum localinstall -y /tmp/haproxy-1.5.18-9.el7.x86_64.rpm
+- name: Enable repos
+  yum_repository:
+    name: local_repo
+    description: Organisation local YUM repo
+    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-rpms
+
+- name: Enable repos
+  yum_repository:
+    name: local_repo_extra
+    description: Organisation local YUM repo
+    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-extras-rpms
+ 
+- name: Enable repos
+  yum_repository:
+    name: local_repo_extra_optional
+    description: Organisation local YUM repo
+    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-optional-rpms
+
+- name: ensure a list of packages installed
+  yum:
+    name: "{{ packages }}"
+    disable_gpg_check: yes
+  vars:
+    packages:
+    - haproxy
 
 - name: Get HAProxy version.
   command: haproxy -v
