@@ -13,7 +13,7 @@
     name: local_repo
     description: Organisation local YUM repo
     #baseurl: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
-    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/
+    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-rpms/repodata/repomd.xml
  
 #- name: install base tools and packages
 
