@@ -1,15 +1,3 @@
-#- hosts: workstation
-#  gather_facts: true
-
-#  - name: OpenStack servers
-#- name: Curl website
-#    shell: curl frontend
-
-#  - name: Fail if 'Ansible has done its job' is not in the page content
-#    fail:
-#    when: "'Ansible has done its job' not in webpage.results[0].content"
-#    tags:
-#      - osp.smoke
 - hosts: workstation
   gather_facts: true
   roles:
