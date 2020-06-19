@@ -1,5 +1,5 @@
 - name: tag_AnsibleGroup_bastions
-  hosts: all 
+  hosts: localhost 
   gather_facts: true
   become: true
   tasks:
