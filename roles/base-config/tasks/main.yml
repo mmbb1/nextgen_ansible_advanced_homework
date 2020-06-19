@@ -20,7 +20,7 @@
 - name: ensure a list of packages installed
   yum:
     name: "{{ packages }}"
-    gpgcheck: no
+    disable_gpg_check: yes
   vars:
     packages:
     - httpd
