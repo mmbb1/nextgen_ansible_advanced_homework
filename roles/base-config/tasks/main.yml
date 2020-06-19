@@ -25,7 +25,6 @@
     packages:
     - httpd
     - httpd-tools
-    - tomcat
 
 - name: create ansible tomcat directory
   file:
