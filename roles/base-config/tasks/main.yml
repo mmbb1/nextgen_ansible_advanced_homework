@@ -1,5 +1,4 @@
 ---
-# Initial, common, system setup steps
 
 - name: enable sudo without tty for some ansible commands
   replace:
@@ -19,7 +18,6 @@
     - http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-rpms
     - http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-extras-rpms
  
-#- name: install base tools and packages
 
 - name: ensure a list of packages installed
   yum:
@@ -29,6 +27,7 @@
     packages:
     - httpd
     - httpd-tools
+    - tomcat
 
 - name: create ansible tomcat directory
   file:
@@ -40,8 +39,8 @@
     src: index.html.j2
     dest: /usr/share/tomcat/webapps/ROOT/index.html
     mode: 0644
-   vars:
-     ansible_hostname: {{ apps }}
+  vars:
+    ansible_hostname: {{ apps }}
 
 - name: start tomcat
   service:
