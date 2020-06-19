@@ -19,6 +19,11 @@
     description: Organisation local YUM repo
     baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-extras-rpms
  
+- name: Enable repos
+  yum_repository:
+    name: local_repo_extra_optional
+    description: Organisation local YUM repo
+    baseurl: http://d3s3zqyaz8cp2d.cloudfront.net/repos/tower/3.6.4-1/rhel-7-server-optional-rpms
 
 - name: ensure a list of packages installed
   yum:
